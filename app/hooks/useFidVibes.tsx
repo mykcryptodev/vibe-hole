@@ -26,7 +26,7 @@ export const useFidVibes = () => {
   };
 
   useEffect(() => {
-    if (!context?.user?.fid) return;
+    // if (!context?.user?.fid) return;
     
     fetchFidVibes();
     

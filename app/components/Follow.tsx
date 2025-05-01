@@ -6,7 +6,7 @@ export const Follow: FC<{ fid: number }> = ({ fid }) => {
     await sdk.actions.viewProfile({ fid });
   }
   return (
-    <div className="btn btn-primary" onClick={handleFollow}>
+    <div className="btn btn-xs btn-primary" onClick={handleFollow}>
       Follow
     </div>
   );
