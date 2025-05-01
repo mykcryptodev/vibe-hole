@@ -1,6 +1,8 @@
 import { FC, useState } from "react";
 import { APP_NAME } from "../constants";
 import Image from "next/image";
+import { Follow } from "./Follow";
+import { Balance } from "./Balance";
 
 export const VibeHole: FC = () => {
   const [vibeBalance, setVibeBalance] = useState(1234);
@@ -15,6 +17,9 @@ export const VibeHole: FC = () => {
         <div className="text-2xl font-bold">
           Get coins.
         </div>
+        <Image src="/images/logo.png" alt="Vibe" width={100} height={100} className="my-20 h-48 w-48 rounded-full animate-[spin_10s_ease-in-out_infinite] " />
+        <Follow fid={284} />
+        <Balance />
         <Image src="/images/logo.png" alt="Vibe" width={100} height={100} className="my-10 h-48 w-48 rounded-full animate-[spin_10s_ease-in-out_infinite] " />
         
         <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-xl shadow-lg border border-[var(--app-card-border)] p-4 max-w-[200px] w-full mb-4">
