@@ -75,8 +75,9 @@ export default function App() {
           <div>
             <div className="flex items-center space-x-2">
               <Wallet className="z-10">
-                <ConnectWallet>
-                  <Name className="text-inherit" />
+                <ConnectWallet className="btn! btn-primary! bg-primary! text-primary-content!">
+                  <Avatar className="h-6 w-6"/>
+                  <Name className="text-inherit text-primary-content!" />
                 </ConnectWallet>
                 <WalletDropdown>
                   <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
