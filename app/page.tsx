@@ -50,7 +50,7 @@ export default function App() {
           variant="ghost"
           size="sm"
           onClick={handleAddFrame}
-          className="text-[var(--app-accent)] p-4"
+          className="p-4"
           icon={<Icon name="plus" size="sm" />}
         >
           Save Frame
@@ -60,8 +60,8 @@ export default function App() {
 
     if (frameAdded) {
       return (
-        <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
-          <Icon name="check" size="sm" className="text-[#0052FF]" />
+        <div className="flex items-center space-x-1 text-sm font-medium animate-fade-out">
+          <Icon name="check" size="sm" />
           <span>Saved</span>
         </div>
       );
@@ -71,7 +71,7 @@ export default function App() {
   }, [context, frameAdded, handleAddFrame]);
 
   return (
-    <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme from-[var(--app-background)] to-[var(--app-gray)]">
+    <div className="flex flex-col min-h-screen font-sans">
       <div className="w-full max-w-md mx-auto px-4 py-3">
         <header className="flex justify-between items-center mb-3 h-11">
           <div>
@@ -104,7 +104,7 @@ export default function App() {
           <Button
             variant="ghost"
             size="sm"
-            className="text-[var(--ock-text-foreground-muted)] text-xs"
+            className="text-xs"
             onClick={() => openUrl("https://base.org/builders/minikit")}
           >
             Built on Base with MiniKit
