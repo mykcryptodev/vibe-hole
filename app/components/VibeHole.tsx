@@ -2,6 +2,7 @@ import { FC } from "react";
 import { APP_NAME } from "../constants";
 import Image from "next/image";
 import { Follow } from "./Follow";
+import { Balance } from "./Balance";
 export const VibeHole: FC = () => {
   return (
     <div className="flex items-center justify-center min-h-100 rounded-large w-full">
@@ -15,6 +16,7 @@ export const VibeHole: FC = () => {
         </div>
         <Image src="/images/logo.png" alt="Vibe" width={100} height={100} className="my-20 h-48 w-48 rounded-full animate-[spin_10s_ease-in-out_infinite] " />
         <Follow fid={284} />
+        <Balance />
       </div>
     </div>
   )
