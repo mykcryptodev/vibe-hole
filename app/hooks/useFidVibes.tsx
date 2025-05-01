@@ -11,17 +11,9 @@ const contract = getContract({
   address: VIBE_HOLE_ADDRESS[chain.id],
 });
 
-type Vibe = {
-  creator: string;
-  claimed: boolean;
-  sourceFid: bigint;
-  counterpartyFid: bigint;
-  amount: bigint;
-};
-
 export const useFidVibes = () => {
   const { context } = useMiniKit();
-  const [fidVibes, setFidVibes] = useState<Vibe[]>([]);
+  const [fidVibes, setFidVibes] = useState<Awaited<ReturnType<typeof getFidVibes>>>([]);
 
   const fetchFidVibes = async () => {
     const vibes = await getFidVibes({
@@ -30,7 +22,7 @@ export const useFidVibes = () => {
       offset: BigInt(0),
       limit: BigInt(10),
     });
-    setFidVibes(vibes as unknown as Vibe[]);
+    setFidVibes(vibes);
   };
 
   useEffect(() => {
