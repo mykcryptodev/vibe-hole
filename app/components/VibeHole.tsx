@@ -3,6 +3,7 @@ import { APP_NAME } from "../constants";
 import Image from "next/image";
 import { Balance } from "./Balance";
 import { Claim } from "./Claim";
+import { Create } from "./Create";
 
 export const VibeHole: FC = () => {
   return (
@@ -24,6 +25,9 @@ export const VibeHole: FC = () => {
         
         <div className="flex items-center">
           <Claim />
+        </div>
+        <div className="flex items-center">
+          <Create />
         </div>
       </div>
     </div>

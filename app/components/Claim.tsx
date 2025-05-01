@@ -40,13 +40,12 @@ export const Claim = () => {
       calls={calls} 
       onStatus={handleOnStatus} 
     >
-      <TransactionButton />
+      <TransactionButton text="Claim Vibe" />
       <TransactionSponsor />
       <TransactionStatus>
         <TransactionStatusLabel />
         <TransactionStatusAction />
       </TransactionStatus>
     </Transaction> 
-
   )
 }
