@@ -22,6 +22,7 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { Button } from "./components/DemoComponents";
 import { Icon } from "./components/DemoComponents";
 import { VibeHole } from "./components/VibeHole";
+import { FaucetButton } from "./components/DemoComponents";
 
 export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
@@ -91,7 +92,10 @@ export default function App() {
               </Wallet>
             </div>
           </div>
-          <div>{saveFrameButton}</div>
+          <div className="flex items-center space-x-3">
+            <FaucetButton />
+            {saveFrameButton}
+          </div>
         </header>
 
         <main className="flex-1">
