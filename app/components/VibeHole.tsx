@@ -12,7 +12,7 @@ export const VibeHole: FC = () => {
         <div className="text-2xl font-bold">
           Get coins.
         </div>
-        <Image src="/images/logo.png" alt="Vibe" width={100} height={100} className="h-48 w-48" />
+        <Image src="/images/logo.png" alt="Vibe" width={100} height={100} className="mt-20 h-48 w-48 animate-[spin_10s_ease-in-out_infinite] " />
       </div>
     </div>
   )
