@@ -4,8 +4,11 @@ import Image from "next/image";
 import { Balance } from "./Balance";
 import { Claim } from "./Claim";
 import { Create } from "./Create";
+import { useFidVibes } from "../hooks/useFidVibes";
 
 export const VibeHole: FC = () => {
+  const { fidVibes } = useFidVibes();
+  
   return (
     <div className="flex items-center justify-center min-h-100 rounded-large w-full">
       <div className="flex flex-col items-center justify-center text-center">
@@ -28,6 +31,15 @@ export const VibeHole: FC = () => {
         </div>
         <div className="flex items-center">
           <Create />
+        </div>
+        <div className="flex items-center">
+          Fid Vibes
+          {fidVibes.map((vibe) => (
+            <div key={vibe.sourceFid}>
+              Counterparty Fid: {vibe.counterpartyFid}
+              Source Fid: {vibe.sourceFid}
+            </div>
+          ))}
         </div>
       </div>
     </div>

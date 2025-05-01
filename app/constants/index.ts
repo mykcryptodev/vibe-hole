@@ -13,5 +13,5 @@ export const client = createThirdwebClient({
 
 export const VIBE_HOLE_ADDRESS: Record<number, `0x${string}`> = {
   [baseSepolia.id]: "0xfab7d11e1bba8199616a64cb43764b45bdb81649",
-  [base.id]: "0x5838A2AE1f5A24fA4A554c4E5B2A64298469e7E8",
+  [base.id]: "0x0f4fa925dd83cf31950d6f6ead141646e2612894",
 } as const;
