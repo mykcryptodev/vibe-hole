@@ -1,7 +1,7 @@
 import { LifecycleStatus, Transaction, TransactionButton, TransactionSponsor, TransactionStatus, TransactionStatusAction, TransactionStatusLabel } from "@coinbase/onchainkit/transaction";
 import { useCallback, useMemo } from "react";
 import { useAccount } from "wagmi";
-import { chain, client, VIBE_HOLE_ADDRESS } from "../constants";
+import { chain, client, TEST_FID, VIBE_HOLE_ADDRESS } from "../constants";
 import { claimVibe } from "@/thirdweb/84532/0xfab7d11e1bba8199616a64cb43764b45bdb81649";
 import { getContract } from "thirdweb/contract";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
@@ -24,7 +24,7 @@ export const Claim = () => {
     const claim = await claimVibe({
       contract,
       to: address as `0x${string}`,
-      fid: BigInt(context?.user?.fid ?? Math.floor(Math.random())),
+      fid: BigInt(context?.user?.fid ?? TEST_FID),
     });
     const data = await encode(claim);
     

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFidVibes } from "@/thirdweb/8453/0x0f4fa925dd83cf31950d6f6ead141646e2612894";
-import { VIBE_HOLE_ADDRESS } from "../constants";
+import { TEST_FID, VIBE_HOLE_ADDRESS } from "../constants";
 import { chain, client  } from "../constants";
 import { getContract } from "thirdweb";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
@@ -18,7 +18,7 @@ export const useFidVibes = () => {
   const fetchFidVibes = async () => {
     const vibes = await getFidVibes({
       contract,
-      fid: BigInt(context?.user?.fid ?? Math.floor(Math.random())),
+      fid: BigInt(context?.user?.fid ?? TEST_FID),
       offset: BigInt(0),
       limit: BigInt(10),
     });

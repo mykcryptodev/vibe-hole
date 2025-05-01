@@ -3,7 +3,7 @@ import { TransactionSponsor, TransactionStatusLabel } from "@coinbase/onchainkit
 import { TransactionStatus } from "@coinbase/onchainkit/transaction";
 import { Transaction } from "@coinbase/onchainkit/transaction";
 import { FC, useCallback, useMemo } from "react";
-import { chain, client, VIBE_HOLE_ADDRESS } from "../constants";
+import { chain, client, TEST_FID, VIBE_HOLE_ADDRESS } from "../constants";
 import { createVibe } from "@/thirdweb/84532/0xfab7d11e1bba8199616a64cb43764b45bdb81649";
 import { encode, getContract } from "thirdweb";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
@@ -23,7 +23,7 @@ export const Create: FC = () => {
     });
     const create = await createVibe({
       contract,
-      inputFid: BigInt(context?.user?.fid ?? Math.floor(Math.random())),
+      inputFid: BigInt(context?.user?.fid ?? TEST_FID),
     })
     const data = await encode(create);
     

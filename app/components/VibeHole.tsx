@@ -32,15 +32,6 @@ export const VibeHole: FC = () => {
         <div className="flex items-center">
           <Create />
         </div>
-        <div className="flex items-center">
-          Fid Vibes
-          {fidVibes.map((vibe) => (
-            <div key={vibe.sourceFid}>
-              Counterparty Fid: {vibe.counterpartyFid}
-              Source Fid: {vibe.sourceFid}
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   )
