@@ -180,7 +180,7 @@ export function Home({ setActiveTab }: HomeProps) {
 }
 
 type IconProps = {
-  name: "heart" | "star" | "check" | "plus" | "arrow-right";
+  name: "heart" | "star" | "check" | "plus" | "arrow-right" | "faucet";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -268,6 +268,25 @@ export function Icon({ name, size = "md", className = "" }: IconProps) {
         <title>Arrow Right</title>
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
+      </svg>
+    ),
+    faucet: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        className="faucet-icon"
+      >
+        <title>Faucet</title>
+        <path d="M5 12h14" />
+        <path d="M12 6v9" />
+        <path d="M5 9c0-1.5 1.5-3 3-3h8c1.5 0 3 1.5 3 3v3c0 1.5-1.5 3-3 3h-8c-1.5 0-3-1.5-3-3V9z" />
+        <path className="water-drop" d="M12 18c0 1 .5 2 2 2s2-1 2-2" />
       </svg>
     ),
   };
@@ -458,5 +477,62 @@ function TransactionCard() {
         </div>
       </div>
     </Card>
+  );
+}
+
+export function FaucetButton() {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleActive = () => {
+    setIsActive(!isActive);
+  };
+
+  return (
+    <button
+      className={`relative flex items-center justify-center rounded-full p-2 transition-all ${
+        isActive
+          ? "bg-[var(--app-accent)] text-[var(--app-background)]"
+          : "bg-[var(--app-card-bg)] text-[var(--app-foreground-muted)] hover:bg-[var(--app-accent-light)]"
+      }`}
+      onClick={toggleActive}
+      aria-label={isActive ? "Disable faucet" : "Enable faucet"}
+    >
+      <div className="relative w-5 h-5 flex items-center justify-center">
+        <img 
+          src="/images/faucet.png" 
+          alt="Faucet" 
+          className={`w-full h-full object-contain transition-all ${isActive ? "filter-none" : "opacity-70"}`}
+        />
+        {isActive && (
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 water-drop"></div>
+        )}
+      </div>
+      <style jsx global>{`
+        .water-drop {
+          width: 4px;
+          height: 4px;
+          background-color: #0052FF;
+          border-radius: 50%;
+          opacity: 0;
+          transform-origin: center;
+          animation: ${isActive ? "drip 1.5s infinite" : "none"};
+        }
+
+        @keyframes drip {
+          0% {
+            transform: translateY(0) scale(0);
+            opacity: 0;
+          }
+          50% {
+            transform: translateY(2px) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(6px) scale(0);
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </button>
   );
 }
