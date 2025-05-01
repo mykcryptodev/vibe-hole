@@ -1541,8 +1541,7 @@ export function claimVibe(
  * Represents the parameters for the "createVibe" function.
  */
 export type CreateVibeParams = {
-  vibeId: AbiParameterToPrimitiveType<{"internalType":"bytes32","name":"vibeId","type":"bytes32"}>
-inputFid: AbiParameterToPrimitiveType<{"internalType":"uint256","name":"inputFid","type":"uint256"}>
+  inputFid: AbiParameterToPrimitiveType<{"internalType":"uint256","name":"inputFid","type":"uint256"}>
 };
 
 /**
@@ -1554,7 +1553,6 @@ inputFid: AbiParameterToPrimitiveType<{"internalType":"uint256","name":"inputFid
  * import { createVibe } from "TODO";
  *
  * const transaction = createVibe({
- *  vibeId: ...,
  *  inputFid: ...,
  * });
  *
@@ -1569,22 +1567,23 @@ export function createVibe(
   return prepareContractCall({
     contract: options.contract,
     method: [
-  "0x9de2a520",
+  "0x38429b04",
   [
-    {
-      "internalType": "bytes32",
-      "name": "vibeId",
-      "type": "bytes32"
-    },
     {
       "internalType": "uint256",
       "name": "inputFid",
       "type": "uint256"
     }
   ],
-  []
+  [
+    {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+    }
+  ]
 ],
-    params: [options.vibeId, options.inputFid]
+    params: [options.inputFid]
   });
 };
 
@@ -2041,7 +2040,13 @@ export function vibe(
       "type": "uint256"
     }
   ],
-  []
+  [
+    {
+      "internalType": "bytes32",
+      "name": "",
+      "type": "bytes32"
+    }
+  ]
 ],
     params: [options.counterpartyFid]
   });
