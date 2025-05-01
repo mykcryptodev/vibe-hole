@@ -7,13 +7,21 @@ import { getContract } from "thirdweb/contract";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
 import { encode } from "thirdweb";
 
-export const Claim = () => {
+type Props = {
+  onSuccess: () => void;
+}
+
+export const Claim = ({ onSuccess }: Props) => {
   const { address } = useAccount();
   const { context } = useMiniKit();
 
   const handleOnStatus = useCallback((status: LifecycleStatus) => {
     console.log('LifecycleStatus', status);
-  }, []);
+    // on success, update the fidVibes state
+    if (status.statusName === "success") {
+      onSuccess();
+    }
+  }, [onSuccess]);
 
   const calls = useMemo(async () => {
     const contract = getContract({

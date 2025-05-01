@@ -1,13 +1,32 @@
 import { FC } from "react";
-import { APP_NAME } from "../constants";
+import { APP_NAME, chain, client, VIBE_HOLE_ADDRESS } from "../constants";
 import Image from "next/image";
-import { Balance } from "./Balance";
 import { Claim } from "./Claim";
 import { Create } from "./Create";
 import { useFidVibes } from "../hooks/useFidVibes";
+import { useWalletBalance } from "thirdweb/react";
+import { useAccount } from "wagmi";
 
 export const VibeHole: FC = () => {
   const { fidVibes } = useFidVibes();
+  const { address } = useAccount();
+
+  console.log({ fidVibes });
+
+  const { data: balance, refetch: refetchBalance } = useWalletBalance({
+    client,
+    address,
+    chain,
+    tokenAddress: VIBE_HOLE_ADDRESS[chain.id],
+  });
+
+  const onClaimSuccess = () => {
+    refetchBalance();
+  }
+
+  const onCreateSuccess = () => {
+    refetchBalance();
+  }
   
   return (
     <div className="flex items-center justify-center min-h-100 rounded-large w-full">
@@ -23,14 +42,14 @@ export const VibeHole: FC = () => {
         
         <div className="bg-[var(--app-card-bg)] backdrop-blur-md rounded-xl shadow-lg border border-[var(--app-card-border)] p-4 max-w-[200px] w-full mb-4">
           <div className="text-sm font-medium mb-1">VIBE Balance</div>
-          <Balance className="text-2xl font-bold" />
+          <div className="text-2xl font-bold">{balance?.displayValue}</div>
         </div>
         
         <div className="flex items-center">
-          <Claim />
+          <Claim onSuccess={onClaimSuccess} />
         </div>
         <div className="flex items-center">
-          <Create />
+          <Create onSuccess={onCreateSuccess} />
         </div>
       </div>
     </div>

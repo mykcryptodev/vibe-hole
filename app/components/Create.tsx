@@ -8,12 +8,19 @@ import { createVibe } from "@/thirdweb/84532/0xfab7d11e1bba8199616a64cb43764b45b
 import { encode, getContract } from "thirdweb";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
 
-export const Create: FC = () => {
+type Props = {
+  onSuccess: () => void;
+}
+
+export const Create: FC<Props> = ({ onSuccess }) => {
   const { context } = useMiniKit();
 
   const handleOnStatus = useCallback((status: LifecycleStatus) => {
     console.log('LifecycleStatus', status);
-  }, []);
+    if (status.statusName === "success") {
+      onSuccess();
+    }
+  }, [onSuccess]);
 
   const calls = useMemo(async () => {
     const contract = getContract({
