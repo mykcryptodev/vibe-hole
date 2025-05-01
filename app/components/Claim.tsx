@@ -24,7 +24,7 @@ export const Claim = () => {
     const claim = await claimVibe({
       contract,
       to: address as `0x${string}`,
-      fid: BigInt(context?.user?.fid ?? 0),
+      fid: BigInt(context?.user?.fid ?? Math.floor(Math.random())),
     });
     const data = await encode(claim);
     

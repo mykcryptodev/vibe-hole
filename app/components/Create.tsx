@@ -23,7 +23,7 @@ export const Create: FC = () => {
     });
     const create = await createVibe({
       contract,
-      inputFid: BigInt(context?.user?.fid ?? 0),
+      inputFid: BigInt(context?.user?.fid ?? Math.floor(Math.random())),
     })
     const data = await encode(create);
     
