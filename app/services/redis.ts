@@ -34,9 +34,3 @@ export async function invalidateCache(key: string): Promise<void> {
     console.error('Error invalidating cache:', error);
   }
 }
-
-export const getUserData = async (fid: string) => {
-  const redis = await getRedisClient();
-  const userData = await redis.get(`user:${fid}`);
-  return userData ? JSON.parse(userData) : null;
-};
