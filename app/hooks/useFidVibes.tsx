@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getFidVibes } from "@/thirdweb/8453/0x0f4fa925dd83cf31950d6f6ead141646e2612894";
 import { TEST_FID, VIBE_HOLE_ADDRESS } from "../constants";
 import { chain, client  } from "../constants";
@@ -15,10 +15,14 @@ export const useFidVibes = () => {
   const { context } = useMiniKit();
   const [fidVibes, setFidVibes] = useState<Awaited<ReturnType<typeof getFidVibes>>>([]);
 
+  const fid = useMemo(() => {
+    return context?.user?.fid ?? TEST_FID;
+  }, [context?.user?.fid]);
+
   const fetchFidVibes = async () => {
     const vibes = await getFidVibes({
       contract,
-      fid: BigInt(context?.user?.fid ?? TEST_FID),
+      fid: BigInt(fid ?? TEST_FID),
       offset: BigInt(0),
       limit: BigInt(10),
     });
@@ -26,7 +30,7 @@ export const useFidVibes = () => {
   };
 
   useEffect(() => {
-    if (!context?.user?.fid) return;
+    // if (!context?.user?.fid) return;
     
     fetchFidVibes();
     

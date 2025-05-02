@@ -2,7 +2,7 @@ import { LifecycleStatus, Transaction, TransactionButton, TransactionSponsor, Tr
 import { useCallback, useMemo } from "react";
 import { useAccount } from "wagmi";
 import { chain, client, TEST_FID, VIBE_HOLE_ADDRESS } from "../constants";
-import { claimVibe } from "@/thirdweb/84532/0xfab7d11e1bba8199616a64cb43764b45bdb81649";
+import { claimVibe } from "@/thirdweb/8453/0x0f4fa925dd83cf31950d6f6ead141646e2612894";
 import { getContract } from "thirdweb/contract";
 import { useMiniKit } from "@coinbase/onchainkit/minikit";
 import { encode } from "thirdweb";

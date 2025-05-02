@@ -7,7 +7,8 @@ import { Follow } from "./Follow";
 const getUserData = async (fid: number) => {
   const response = await fetch(`/api/users/get?fids=${fid}`);
   const data = await response.json();
-  return data.users[0]; // Get the first user from the users array
+  console.log({ fid, userData: data.users?.[0] });
+  return data.users?.[0]; // Get the first user from the users array
 }
 
 export const UserCard: FC<{ fid: number }> = ({ fid }) => {
@@ -16,8 +17,8 @@ export const UserCard: FC<{ fid: number }> = ({ fid }) => {
     queryFn: () => getUserData(fid),
   });
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
+  if (error || !data) {
+    return <div>Error: {error?.message}</div>;
   }
 
   return (
