@@ -12,10 +12,20 @@ const getUserData = async (fid: number) => {
 }
 
 export const UserCard: FC<{ fid: number }> = ({ fid }) => {
-  const { data, error } = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: ["user", fid],
     queryFn: () => getUserData(fid),
   });
+
+  if (isLoading) {
+    return <div className="flex flex-col items-center gap-2">
+      <div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse" />
+      <div className="flex flex-col">
+        <div className="w-24 h-4 bg-gray-200 animate-pulse rounded" />
+        <div className="w-24 h-4 bg-gray-200 animate-pulse rounded" />
+      </div>
+    </div>
+  }
 
   if (error || !data) {
     return <div>Error: {error?.message}</div>;
