@@ -12,6 +12,8 @@ export const VibeHole: FC = () => {
   const { fidVibes } = useFidVibes();
   const { address } = useAccount();
 
+  console.log({ fidVibes });
+
   const { data: balance, refetch: refetchBalance } = useWalletBalance({
     client,
     address,
